@@ -78,14 +78,19 @@ const TextareaAutosize: React.ForwardRefRenderFunction<
       maxRows,
     );
 
-    if (heightRef.current !== height) {
-      heightRef.current = height;
-      const sph = specifiedHeight ? specifiedHeight : -1;
-      const finalHeight = height > sph ? height : sph;
+    const sph = specifiedHeight ? specifiedHeight : -1;
+    const finalHeight = height > sph ? height : sph;
+
+    if (heightRef.current !== finalHeight) {
+      heightRef.current = finalHeight;
       node.style.setProperty('height', `${finalHeight}px`, 'important');
-      onHeightChange(height, { rowHeight });
+      onHeightChange(finalHeight, { rowHeight });
     }
   };
+
+  React.useEffect(() => {
+    resizeTextarea();
+  }, [specifiedHeight]);
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (!isControlled) {
