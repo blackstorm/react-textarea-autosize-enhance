@@ -1,7 +1,13 @@
-[![npm version](https://img.shields.io/npm/v/react-textarea-autosize.svg)](https://www.npmjs.com/package/react-textarea-autosize)
-[![npm](https://img.shields.io/npm/dm/react-textarea-autosize.svg)](https://www.npmjs.com/package/react-textarea-autosize)
+[![npm version](https://img.shields.io/npm/v/react-textarea-autosize-enhance.svg)](https://www.npmjs.com/package/react-textarea-autosize)
+[![npm](https://img.shields.io/npm/dm/react-textarea-autosize-enhance.svg)](https://www.npmjs.com/package/react-textarea-autosize)
 
-# react-textarea-autosize
+# react-textarea-autosize-enhance
+
+Fork from `Andarist/react-textarea-autosize`
+
+Use `specifiedHeight` support specify height
+
+## react-textarea-autosize
 
 Drop-in replacement for the textarea component which automatically resizes
 textarea as content changes. A native React version of the popular
@@ -11,7 +17,7 @@ around <span class="weight">1.3KB</span> (minified & gzipped).
 This module supports IE9 and above.
 
 ```javascript
-import TextareaAutosize from 'react-textarea-autosize';
+import TextareaAutosize from 'react-textarea-autosize-enhance';
 
 // If you use CommonJS syntax:
 // var TextareaAutosize = require('react-textarea-autosize').default;
@@ -26,7 +32,7 @@ React.renderComponent(
 
 ## Install
 
-`npm install react-textarea-autosize`
+`npm install react-textarea-autosize-enhance`
 
 ## Demo
 
@@ -42,6 +48,7 @@ https://andarist.github.io/react-textarea-autosize/
 | `minRows`           | `number`  | Minimum number of rows to show for textarea                                                                                                                                                                                                        |
 | `onHeightChange`    | `func`    | Function invoked on textarea height change, with height as first argument. The second function argument is an object containing additional information that might be useful for custom behaviors. Current options include `{ rowHeight: number }`. |
 | `cacheMeasurements` | `boolean` | Reuse previously computed measurements when computing height of textarea. Default: `false`                                                                                                                                                         |
+| `specifiedHeight`   | `number`  | If `specifiedHeight` number greater than calculate node height. Then use `specifiedHeight` else use calculate height                                                                                                                               |
 
 Apart from these, the component accepts all props that are accepted by `<textarea/>`, like `style`, `onChange`, `value`, etc.
 
