@@ -19,6 +19,7 @@ export type TextareaHeightChangeMeta = {
 export interface TextareaAutosizeProps extends Omit<TextareaProps, 'style'> {
   maxRows?: number;
   minRows?: number;
+  specifiedHeight?: number;
   onHeightChange?: (height: number, meta: TextareaHeightChangeMeta) => void;
   cacheMeasurements?: boolean;
   style?: Style;
@@ -32,6 +33,7 @@ const TextareaAutosize: React.ForwardRefRenderFunction<
     cacheMeasurements,
     maxRows,
     minRows,
+    specifiedHeight,
     onChange = noop,
     onHeightChange = noop,
     ...props
@@ -78,7 +80,9 @@ const TextareaAutosize: React.ForwardRefRenderFunction<
 
     if (heightRef.current !== height) {
       heightRef.current = height;
-      node.style.setProperty('height', `${height}px`, 'important');
+      const sph = specifiedHeight ? specifiedHeight : -1;
+      const finalHeight = height > sph ? height : sph;
+      node.style.setProperty('height', `${finalHeight}px`, 'important');
       onHeightChange(height, { rowHeight });
     }
   };
